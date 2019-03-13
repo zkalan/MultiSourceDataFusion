@@ -1,16 +1,16 @@
-package com.iip.ui.feature_extraction.execute.connection;
+package com.iip.ui.ner.DBHelper;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseOperations {
+public class DatabaseHelper {
     // JDBC驱动器名称
     public static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     // 数据库的名称
     public static String DB_URL_prefix = "jdbc:mysql://127.0.0.1:3306/";
     public static String DBNAME = "kjb_fe";
-    public static String DB_URL = "jdbc:mysql://127.0.0.1:3306/kjb_fe";
+    public static String DB_URL = "jdbc:mysql://127.0.0.1:3306/forKJB?characterEncoding=utf-8";
     // 数据库用户和密码
     public static String USER = "root";
     public static String PASS = "123456";
@@ -21,15 +21,13 @@ public class DatabaseOperations {
     public static ResultSet resultSet = null;
 
     //数据库相关参数
-    public static String originalDataTables[] = {"data_original", "data_original", "data_original", "data_summary"};
-    public static String outputTableNames[] = {"output_words", "output_key_words", "output_vector", "output_summary"}; // test
+    public static String originalDataTables[] = {"datasouce1"};
+    public static String outputTableNames[] = {"dataout1", "dataout2", "dataout3", "dataout4"};
     public static final String dataColumn = "data";
     public static String sql = "SHOW TABLES LIKE ";  //  + originalDataTables[0]
 
-    public static boolean isReady = false;
-    public static String k = "5";
-    public static String ksm = "2";
-    public static String path = "../zhwiki_50d.word2vec";
+    public static boolean hasSet = false;
+
 
     public static boolean connectDB(){
         try {
@@ -101,7 +99,7 @@ public class DatabaseOperations {
     }
 
     public static void main(String a[]){
-        DatabaseOperations.connectDB(); //connect 操作
+        DatabaseHelper.connectDB(); //connect 操作
         List<String> r = read(originalDataTables[0], dataColumn); //read 操作
         write(outputTableNames[3], dataColumn, r); //write 操作
         disconnect(); //disconnect 操作

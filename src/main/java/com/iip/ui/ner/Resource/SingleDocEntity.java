@@ -5,6 +5,7 @@ import java.util.List;
 import com.iip.data.entity.NameEntity;
 import com.iip.data.entity.OrganizationEntity;
 import com.iip.data.entity.PlaceEntity;
+import com.iip.data.entity.TimeEntity;
 import java.util.ArrayList;
 
 
@@ -18,11 +19,13 @@ public class SingleDocEntity {
     private String personEntityResult = "";
     private String locationEntityResult = "";
     private String organizationEntityResult = "";
+    private String timeEntityResult = "";
 //    private String dateStr = "";
 //    private Date date;
     private List<Entity> personEntities = new ArrayList<>();
     private List<Entity> locationEntities = new ArrayList<>();
     private List<Entity> organizationEntities = new ArrayList<>();
+    private List<Entity> timeEntities = new ArrayList<>();
 
 
     public static List<Entity> peosonEntityExtract(String text){
@@ -101,6 +104,33 @@ public class SingleDocEntity {
         if (organizationEntities.size() == 0) return "找不到机构名实体信息";
         String res = "";
         for(Entity entity: organizationEntities){
+            res += entity.word +";";
+        }
+        return res;
+    }
+
+
+    public static List<Entity> timeEntityExtract(String text){
+        List<Entity> list = new ArrayList<>();
+        try {
+            List<Entity> timeEntity = TimeEntity.entityRecognition(text);
+            list.addAll(timeEntity);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public void timeEntityExtract(){
+        timeEntities = timeEntityExtract(text);
+        timeEntityResult = timeEntitytoString();
+    }
+
+    public String timeEntitytoString(){
+        if (timeEntities.size() == 0) return "找不到时间实体信息";
+        String res = "";
+        for(Entity entity: timeEntities){
             res += entity.word +";";
         }
         return res;
@@ -197,6 +227,23 @@ public class SingleDocEntity {
     }
 
 
+    public String getTimeEntityResult() {
+        return timeEntityResult;
+    }
+
+    public void setTimeEntityResult(String timeEntityResult) {
+        this.timeEntityResult = timeEntityResult;
+    }
+
+    public List<Entity> getTimeEntities() {
+        return timeEntities;
+    }
+
+    public void setTimeEntities(List<Entity> timeEntities) {
+        this.timeEntities= timeEntities;
+    }
+
+
 
 
 
@@ -206,8 +253,8 @@ public class SingleDocEntity {
         item.setId(1);
         item.setText("济南杨铭宇餐饮管理有限公司是由杨先生创办的餐饮企业，晚上九点去吃饭，2008年5月3日北京今天很热");
         System.out.println(item.text);
-        item.personEntityExtract();
-        System.out.println(item.personEntityResult);
+        item.timeEntityExtract();
+        System.out.println(item.timeEntityResult);
     }
 }
 

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -91,11 +92,16 @@ public class SpaceTimeMain extends Application {
 //            primaryStage.setY(Screen.getPrimary().getVisualBounds().getMinY());
 //            primaryStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
 //            primaryStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    Stage stage=new Stage();
+    public void  showWindow() throws Exception {
+        stage.initModality(Modality.APPLICATION_MODAL);
+        start(stage);
     }
 
 

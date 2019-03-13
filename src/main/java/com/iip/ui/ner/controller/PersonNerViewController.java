@@ -1,5 +1,6 @@
 package com.iip.ui.ner.controller;
 
+import com.iip.ui.ner.DBHelper.DatabaseHelper;
 import com.iip.ui.ner.Resource.SingleDocEntity;
 import com.iip.ui.ner.Resource.nerData;
 
@@ -11,7 +12,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.iip.ui.ner.MainNer.show_dialog;
 
 public class PersonNerViewController extends RootController implements Initializable {
     @FXML
@@ -57,12 +62,17 @@ public class PersonNerViewController extends RootController implements Initializ
 
     @FXML
     public void entityImportClicked(){
-        Alert information = new Alert(Alert.AlertType.INFORMATION,"提取出的人名实体已经导入，可在数据库中查看。如果还未提取出人名实体，请重新点击对所有文本提取人名实体按钮后导入");
-        information.setTitle("information"); //设置标题，不设置默认标题为本地语言的information
-        information.setHeaderText("Information"); //设置头标题，默认标题为本地语言的information
-        Button infor = new Button("show Information");
-//        SpaceTimeData.entityItemsToPeopleOrientations();
-        information.showAndWait(); //显示弹窗，同时后续代码等挂起
+        if (!DatabaseHelper.hasSet){
+            show_dialog("请先在设置中填写相关数据");
+            return;
+        }
+        List<String> dataforDB = new ArrayList<>();
+        for (SingleDocEntity item:nerData.entityItems){
+            System.out.print(item.personEntitytoString());
+            dataforDB.add(item.personEntitytoString());
+        }
+        DatabaseHelper.write(DatabaseHelper.outputTableNames[0],"data",dataforDB);
+        dataforDB.clear();
     }
 
     @Override

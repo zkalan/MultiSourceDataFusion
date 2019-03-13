@@ -5,7 +5,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -97,6 +99,18 @@ public class MainNer extends Application {
         }
     }
 
+    public static void show_dialog(String message) {
+        Alert _alert = new Alert(Alert.AlertType.INFORMATION);
+        _alert.setTitle("警告");
+        _alert.setHeaderText("错误");
+        _alert.setContentText(message);
+        _alert.show();
+    }
+    Stage stage=new Stage();
+    public void  showWindow() throws Exception {
+        stage.initModality(Modality.APPLICATION_MODAL);
+        start(stage);
+    }
 
     public static void main(String[] args) {
         launch(args);

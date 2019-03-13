@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -61,6 +62,8 @@ import java.util.ResourceBundle;
         @FXML
         private AnchorPane APOrganizationNer;
         @FXML
+        private AnchorPane APTimeNer;
+        @FXML
         private AnchorPane APSetting;
         @FXML
         private BorderPane BPMainViewPane;
@@ -82,7 +85,9 @@ import java.util.ResourceBundle;
         @FXML
         public void exit(MouseEvent mouseEvent){
             mouseEvent.consume();
-            Platform.exit();
+            //Platform.exit();
+            Stage stg = (Stage)((AnchorPane)mouseEvent.getSource()).getScene().getWindow();
+            stg.close();
         }
         @FXML
         private void menuButtonClicked(MouseEvent mouseEvent){
@@ -152,8 +157,10 @@ import java.util.ResourceBundle;
             menuModules.add(new com.iip.ui.ner.controller.MenuModule(APLocationNer, "../view/LocationNerView.fxml", "地名识别", "LocationNerViewController"));
             // 机构名识别
             menuModules.add(new com.iip.ui.ner.controller.MenuModule(APOrganizationNer, "../view/OrganizationNerView.fxml", "机构名识别", "OrganizationNerViewController"));
+            // 时间识别
+            menuModules.add(new com.iip.ui.ner.controller.MenuModule(APTimeNer, "../view/TimeNerView.fxml", "时间识别", "TimeNerViewController"));
             // 设置界面
-            menuModules.add(new com.iip.ui.ner.controller.MenuModule(APSetting, "../view/SettingView.fxml", "设置", "SettingViewController"));
+            menuModules.add(new com.iip.ui.ner.controller.MenuModule(APSetting, "../view/ConfigView.fxml", "设置", "ConfigController"));
         }
 
     }

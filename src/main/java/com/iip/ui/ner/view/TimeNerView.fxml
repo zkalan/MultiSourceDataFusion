@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iip.ui.ner.controller.ParticipleViewController">
+<AnchorPane prefHeight="500.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iip.ui.ner.controller.TimeNerViewController">
     <children>
         <!-- 开头数据加载显示部分 -->
         <AnchorPane prefHeight="50.0" prefWidth="986.0">
@@ -28,8 +28,8 @@
             </children>
         </AnchorPane>
 
-        <!-- 分词显示部分 -->
-        <TabPane fx:id="TPParticiple" prefHeight="430.0" prefWidth="986.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.topAnchor="70.0">
+        <!-- 时间抽取显示部分 -->
+        <TabPane fx:id="TPTimeNer" prefHeight="430.0" prefWidth="986.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.topAnchor="70.0">
             <tabs>
                 <!-- load ParticipleTabView.fxml -->
             </tabs>

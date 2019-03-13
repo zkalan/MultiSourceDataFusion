@@ -18,7 +18,7 @@
         <!-- 开头数据加载显示部分 -->
         <AnchorPane prefHeight="50.0" prefWidth="986.0">
           <children>
-              <Label fx:id="LBData" prefHeight="30.0" prefWidth="80.0" text="dataset" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+              <Label fx:id="LBData" prefHeight="30.0" prefWidth="80.0" text="数据集" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
                   <font>
                       <Font size="19.0" />
                   </font>

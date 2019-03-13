@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,7 +81,9 @@ public class SpaceTimeMainViewController extends RootController implements Initi
     @FXML
     public void exit(MouseEvent mouseEvent){
         mouseEvent.consume();
-        Platform.exit();
+        Stage stg = (Stage)((AnchorPane)mouseEvent.getSource()).getScene().getWindow();
+        stg.close();
+        //Platform.exit();
     }
     @FXML
     private void menuButtonClicked(MouseEvent mouseEvent){
@@ -139,15 +142,15 @@ public class SpaceTimeMainViewController extends RootController implements Initi
         System.out.println("In SpaceTimeMainViewController initialize");
         menuModules = new ArrayList<MenuModule>();
         // 加载数据界面
-        menuModules.add(new MenuModule(APLoadData, "../view/LoadDataView.fxml", "Load Data", "LoadDataViewController"));
+        menuModules.add(new MenuModule(APLoadData, "../view/LoadDataView.fxml", "载入数据", "LoadDataViewController"));
         // 分词界面
-        menuModules.add(new MenuModule(APParticiple, "../view/ParticipleView.fxml", "Participle", "ParticipleViewController"));
+        menuModules.add(new MenuModule(APParticiple, "../view/ParticipleView.fxml", "分词", "ParticipleViewController"));
         // 实体界面
-        menuModules.add(new MenuModule(APEntity, "../view/EntityView.fxml", "Entity", "EntityViewController"));
+        menuModules.add(new MenuModule(APEntity, "../view/EntityView.fxml", "实体", "EntityViewController"));
         // 时空性界面
-        menuModules.add(new MenuModule(APSpaceTime, "../view/SpaceTimeView.fxml", "Space Time", "SpaceTimeViewController"));
-        // 设置界面
-        menuModules.add(new MenuModule(APSetting, "../view/SettingView.fxml", "Setting", "SettingViewController"));
+        menuModules.add(new MenuModule(APSpaceTime, "../view/SpaceTimeView.fxml", "跨时空特性", "SpaceTimeViewController"));
+        //        // 设置界面
+        menuModules.add(new MenuModule(APSetting, "../view/SettingView.fxml", "设置", "SettingViewController"));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.iip.ui.ner.controller;
 
 
+import com.iip.ui.ner.DBHelper.DatabaseHelper;
 import com.iip.ui.ner.Resource.nerData;
 import com.iip.ui.ner.Resource.SingleDocParticiple;
 import com.iip.ui.ner.Resource.SingleDocEntity;
@@ -21,12 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.iip.ui.ner.MainNer.show_dialog;
+
 public class LoadDataViewController extends RootController implements Initializable {
     @FXML
     private ListView<String> LVRawDataListView;
     @FXML
     private ListView<String> LVHandledDataListView;
 
+    private List<String> datalist = new ArrayList<>();
 
     @FXML
     private void loadDataByFileClicked(MouseEvent mouseEvent){
@@ -64,6 +68,15 @@ public class LoadDataViewController extends RootController implements Initializa
     }
     @FXML
     private void loadDataByMysqlClicked(MouseEvent mouseEvent){
+        if (!DatabaseHelper.hasSet) {
+            show_dialog("请先在设置中填写相关数据库设置");
+            return;
+        }
+        datalist = DatabaseHelper.read(DatabaseHelper.originalDataTables[0], "data");
+        nerData.rawDataList.clear();
+        nerData.rawDataList.addAll(datalist);
+        LVRawDataListView.setItems(nerData.rawDataList);
+
         // todo
     }
     @FXML

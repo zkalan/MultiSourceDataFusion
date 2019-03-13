@@ -17,7 +17,7 @@
                             </image>
                         </ImageView>
                     </children></AnchorPane>
-                <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="数据库" />
+                <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="命名实体识别" />
                 <Label fx:id="LblMainTitle" layoutX="206.0" layoutY="13.0" styleClass="title-font" stylesheets="@stylesheet/nerMainView.css" text="命名实体识别工具" textFill="#37bc9b"><!--  AnchorPane.leftAnchor="75.0" -->
                     <font>
                         <Font name="System Bold" size="28.0" />
@@ -101,6 +101,17 @@
                             </image>
                         </ImageView>
                         <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="机构名识别" mouseTransparent="true" />
+                    </children>
+                </AnchorPane>
+                <!-- 时间识别模块 -->
+                <AnchorPane fx:id="APTimeNer" onMouseClicked="#menuButtonClicked" prefHeight="60.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="360.0">
+                    <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                            <image>
+                                <Image url="@picture/time.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="时间识别" mouseTransparent="true" />
                     </children>
                 </AnchorPane>
                 <!-- 设置模块 -->

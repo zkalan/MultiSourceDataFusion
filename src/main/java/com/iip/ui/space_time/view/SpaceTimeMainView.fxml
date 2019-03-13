@@ -17,7 +17,7 @@
                         </image>
                     </ImageView>
                 </children></AnchorPane>
-            <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="database: null" />
+            <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="数据库: null" />
             <Label fx:id="LblMainTitle" layoutX="206.0" layoutY="13.0" styleClass="title-font" stylesheets="@stylesheet/SpaceTimeMainView.css" text="多源实体表示工具" textFill="#37bc9b"><!--  AnchorPane.leftAnchor="75.0" -->
                 <font>
                     <Font name="System Bold" size="28.0" />
@@ -45,7 +45,7 @@
                             <Image url="@picture/connectionConfigMenuButton.png" />
                         </image>
                     </ImageView>
-                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="Load Data" mouseTransparent="true" />
+                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="载入数据" mouseTransparent="true" />
                 </children>
             </AnchorPane>
             <!-- 分词展示模块 -->
@@ -56,7 +56,7 @@
                             <Image url="@picture/infoMenuButton.png" />
                         </image>
                     </ImageView>
-                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="Paticiple" mouseTransparent="true" />
+                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="分词" mouseTransparent="true" />
                 </children>
             </AnchorPane>
             <!-- 实体展示模块 -->
@@ -67,7 +67,7 @@
                             <Image url="@picture/SearchKeyword.png" />
                         </image>
                     </ImageView>
-                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="Entity" mouseTransparent="true" />
+                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="实体" mouseTransparent="true" />
                 </children>
             </AnchorPane>
             <!-- 时空性展示模块 -->
@@ -78,7 +78,7 @@
                             <Image url="@picture/SearchKeyword.png" />
                         </image>
                     </ImageView>
-                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="Space Time" mouseTransparent="true" />
+                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="跨时空特性" mouseTransparent="true" />
                 </children>
             </AnchorPane>
             <!-- 设置模块 -->
@@ -89,7 +89,7 @@
                             <Image url="@picture/settingsMenuButton.png" />
                         </image>
                     </ImageView>
-                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="Setting" mouseTransparent="true" />
+                    <Label layoutX="60.0" layoutY="20.0" prefWidth="100.0" text="设置" mouseTransparent="true" />
                 </children>
             </AnchorPane>
         </children>

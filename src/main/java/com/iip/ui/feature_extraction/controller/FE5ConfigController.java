@@ -15,16 +15,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FE4ConfigController {
+public class FE5ConfigController {
 
     @FXML
     private TextField databaseName, inputTableStep1, outputTableStep1, inputTableStep2, outputTableStep2,
-            inputTableStep3, outputTableStep3, tfK, tfPath;
+            inputTableStep3, outputTableStep3, inputTableStep4, outputTableStep4, tfK, tfPath, numSmary;
     @FXML
     private Label labelNote, labelK, labelPath;
     @FXML
     private Button btnConfirm;
-    private String dbname, it1, ot1, it2, ot2, it3, ot3, path, k= "";
+    private String dbname, it1, ot1, it2, ot2, it3, ot3, it4, ot4, path, k= "", ksm = "";
 
     private boolean reload_database = true;
     private boolean isTableSet = false;
@@ -73,13 +73,18 @@ public class FE4ConfigController {
         it1 = inputTableStep1.getText().trim();
         it2 = inputTableStep2.getText().trim();
         it3 = inputTableStep3.getText().trim();
+        it4 = inputTableStep4.getText().trim();
+
         ot1 = outputTableStep1.getText().trim();
         ot2 = outputTableStep2.getText().trim();
         ot3 = outputTableStep3.getText().trim();
+        ot4 = outputTableStep4.getText().trim();
+
         k = tfK.getText().trim();
+        ksm = numSmary.getText().trim();
         path = tfPath.getText().trim();
-        if(it1.equals("") || it2.equals("") || it3.equals("") || ot1.equals("") || ot2.equals("") ||
-                ot3.equals("") || k.equals("") || path.equals("")){
+        if(it1.equals("") || it2.equals("") || it3.equals("") || it4.equals("") || ot1.equals("") || ot2.equals("") ||
+                ot3.equals("") || ot4.equals("") || k.equals("") || path.equals("") || ksm.equals("")){
             DatabaseOperations.print("数据表名存在空的");
             Main.f_alert_informationDialog("操作错误", "数据表名或参数存在空的!");
             return;
@@ -97,10 +102,14 @@ public class FE4ConfigController {
         DatabaseOperations.originalDataTables[0] = it1;
         DatabaseOperations.originalDataTables[1] = it2;
         DatabaseOperations.originalDataTables[2] = it3;
+        DatabaseOperations.originalDataTables[3] = it4;
+
         DatabaseOperations.outputTableNames[0] = ot1;
         DatabaseOperations.outputTableNames[1] = ot2;
         DatabaseOperations.outputTableNames[2] = ot3; //todo: undo
+        DatabaseOperations.outputTableNames[3] = ot4;
         DatabaseOperations.k = k;
+        DatabaseOperations.ksm = ksm;
         DatabaseOperations.path = path;
         isTableSet=true;
         DatabaseOperations.print("表格设置完成!");
@@ -115,11 +124,13 @@ public class FE4ConfigController {
         inputTableStep1.setText("");
         inputTableStep2.setText("");
         inputTableStep3.setText("");
+        inputTableStep4.setText("");
         outputTableStep1.setText("");
         outputTableStep2.setText("");
         outputTableStep3.setText("");
+        outputTableStep4.setText("");
         databaseName.setText("");
-        dbname= it1= ot1= it2= ot2= it3= ot3 = "";
+        dbname= it1= ot1= it2= ot2= it3= ot3 = it4 = ot4 =  "";
         isTableSet = false;
     }
 

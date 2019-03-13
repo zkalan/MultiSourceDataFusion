@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -105,6 +106,12 @@ public class Main extends Application {
         _alert.setContentText(p_message);
 //        _alert.initOwner(d_stage);
         _alert.show();
+    }
+
+    Stage stage=new Stage();
+    public void  showWindow() throws Exception {
+        stage.initModality(Modality.APPLICATION_MODAL);
+        start(stage);
     }
 
 

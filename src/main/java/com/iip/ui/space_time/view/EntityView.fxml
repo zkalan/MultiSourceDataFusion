@@ -16,7 +16,7 @@
         <!-- 开头数据加载显示部分 -->
         <AnchorPane prefHeight="50.0" prefWidth="986.0">
             <children>
-                <Label fx:id="LBData" prefHeight="30.0" prefWidth="80.0" text="dataset" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+                <Label fx:id="LBData" prefHeight="30.0" prefWidth="80.0" text="数据集" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
                     <font>
                         <Font size="19.0" />
                     </font>
@@ -29,8 +29,8 @@
             <center>
                 <TableView fx:id="TVEntity" fixedCellSize="0.0" prefHeight="400.0" prefWidth="950.0">
                     <columns>
-                        <TableColumn fx:id="TCID" prefWidth="70" text="ID" />
-                        <TableColumn fx:id="TCDate" prefWidth="170" text="Date" />
+                        <TableColumn fx:id="TCID" prefWidth="70" text="序号" />
+                        <TableColumn fx:id="TCDate" prefWidth="170" text="日期" />
                         <TableColumn fx:id="TCRawData" prefWidth="310.0" text="源文本" />
                         <TableColumn fx:id="TCEntityRes" prefWidth="430.0" text="实体抽取结果" />
                     </columns>

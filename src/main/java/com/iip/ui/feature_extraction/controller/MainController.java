@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
@@ -39,7 +41,10 @@ public class MainController {
     private AnchorPane feStep4;
 
     @FXML
-    private Label keyword, vectorize, un;
+    private AnchorPane feStep5;
+
+    @FXML
+    private Label keyword, vectorize, summary, un;
     @FXML
     private TextField user;
     @FXML
@@ -54,39 +59,37 @@ public class MainController {
     /**
      * 缓存连接配置界面
      */
-    private AnchorPane paneStep1, paneStep2, paneStep3, paneConfig;
+    private AnchorPane paneStep1, paneStep2, paneStep3, paneStep4, paneConfig;
 
-    @FXML
-    private void login(MouseEvent mouseEvent){
-        if(isLogin){
-            Main.f_alert_informationDialog("已登录!", "请进入配置界面进行数据源的配置!");
-            return;
-        }
-        u = user.getText().trim();
-        p = pw.getText().trim();
-        if(u.equals("")||p.equals("")){
-            DatabaseOperations.print("用户名或者密码为空");
-            Main.f_alert_informationDialog("用户名和密码为空!", "请检查用户名和密码!");
-        }else if(u.equals("root")&&p.equals("123456")){
-            DatabaseOperations.print("登录成功");
-            Main.f_alert_informationDialog("已登录!", "请进入配置界面进行数据源的配置!");
-            isLogin = true;
-        }else{
-            DatabaseOperations.print("用户名或者密码错误");
-            Main.f_alert_informationDialog("用户名或密码错误!", "请检查用户名和密码!");
-        }
-    }
+//    @FXML
+//    private void login(MouseEvent mouseEvent){
+//        if(isLogin){
+//            Main.f_alert_informationDialog("已登录!", "请进入配置界面进行数据源的配置!");
+//            return;
+//        }
+//        u = user.getText().trim();
+//        p = pw.getText().trim();
+//        if(u.equals("")||p.equals("")){
+//            DatabaseOperations.print("用户名或者密码为空");
+//            Main.f_alert_informationDialog("用户名和密码为空!", "请检查用户名和密码!");
+//        }else if(u.equals("root")&&p.equals("123456")){
+//            DatabaseOperations.print("登录成功");
+//            Main.f_alert_informationDialog("已登录!", "请进入配置界面进行数据源的配置!");
+//            isLogin = true;
+//        }else{
+//            DatabaseOperations.print("用户名或者密码错误");
+//            Main.f_alert_informationDialog("用户名或密码错误!", "请检查用户名和密码!");
+//        }
+//    }
 
     public void initialize(){
         keyword.setText("关键词");
         vectorize.setText("向量化");
-        un.setText("用户名:");
-        user.setPromptText("输入用户名");
     }
 
     @FXML
     private void menuButtonClicked(MouseEvent mouseEvent) {
-        if(!isLogin){
+        if(false){
             DatabaseOperations.print("未登录");
             Main.f_alert_informationDialog("未登录!", "请先登录!");
             return;
@@ -170,16 +173,38 @@ public class MainController {
         if (selectedMenuButton == feStep4){
             feStep4.getStyleClass().clear();
             feStep4.getStyleClass().add("menuButtonSelected");
+            feMainTitle.setText("FE-文本摘要");
+
+            if (paneStep4 == null){
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(MainController.class.getResource("../view/FE4TextsummyView.fxml"));
+                    paneStep4 = loader.load();
+                    paneStep4.setPrefSize(feMainViewPane.getWidth()-60, feMainViewPane.getHeight()-60);
+                    FE4TextsummyController controller = loader.getController();
+                    controller.initialize();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            feMainViewPane.setCenter(paneStep4);
+            currentMenuButton = selectedMenuButton;
+        }
+
+        if (selectedMenuButton == feStep5){
+            feStep4.getStyleClass().clear();
+            feStep4.getStyleClass().add("menuButtonSelected");
             feMainTitle.setText("FE-配置");
 
             if (paneConfig == null){
                 try {
                     FXMLLoader loader = new FXMLLoader();
 //                    loader.setResources(ResourceBundle.getBundle("my", Locale.CHINA));
-                    loader.setLocation(MainController.class.getResource("../view/FE4ConfigView.fxml"));
+                    loader.setLocation(MainController.class.getResource("../view/FE5ConfigView.fxml"));
                     paneConfig = loader.load();
                     paneConfig.setPrefSize(feMainViewPane.getWidth()-60, feMainViewPane.getHeight()-60);
-                    FE4ConfigController controller = loader.getController();
+                    FE5ConfigController controller = loader.getController();
                     controller.initialize();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -195,7 +220,9 @@ public class MainController {
     private void exit(MouseEvent mouseEvent){
         DatabaseOperations.disconnect();
         mouseEvent.consume();
-        Platform.exit();
+        Stage stg = (Stage)((AnchorPane)mouseEvent.getSource()).getScene().getWindow();
+        stg.close();
+        //Platform.exit();
     }
 
 }
