@@ -49,9 +49,9 @@ public class ParticipleTabViewController implements Initializable{
                 }
                 break;
             case 1:
-//                        for(SingleDocParticiple item: SpaceTimeData.participleItems){
-//                            item.participleHanlp();
-//                        }
+//                for(SingleDocParticiple item: SpaceTimeData.participleItems){
+//                    item.participleHanlp();
+//                }
                 break;
             default:
                 break;
